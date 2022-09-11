@@ -1948,7 +1948,7 @@ html {
   line-height: 22px;
   white-space: nowrap;
   background-color: #35977F;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .ant-ribbon-text {
   color: #fff;
@@ -2076,7 +2076,7 @@ html {
 .ant-ribbon-rtl.ant-ribbon-placement-end {
   right: unset;
   left: -8px;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 2px;
   border-bottom-left-radius: 0;
 }
 .ant-ribbon-rtl.ant-ribbon-placement-end .ant-ribbon-corner {
@@ -2091,7 +2091,7 @@ html {
   right: -8px;
   left: unset;
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 2px;
 }
 .ant-ribbon-rtl.ant-ribbon-placement-start .ant-ribbon-corner {
   right: 0;
@@ -16337,8 +16337,8 @@ textarea.ant-mentions {
 .ant-menu-submenu-title.ant-menu-item-only-child > .ant-menu-item-icon {
   margin-right: 0;
 }
-.ant-menu-item:focus-visible,
-.ant-menu-submenu-title:focus-visible {
+.ant-menu-item:not(.ant-menu-item-disabled):focus-visible,
+.ant-menu-submenu-title:not(.ant-menu-item-disabled):focus-visible {
   box-shadow: 0 0 0 2px #bdc9c5;
 }
 .ant-menu > .ant-menu-item-divider {
@@ -21589,7 +21589,7 @@ span.ant-radio + * {
   height: 22px;
   line-height: 22px;
   vertical-align: middle;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(to right, #fff, #fff);
+  background-color: rgba(0, 0, 0, 0.25);
   border: 0;
   border-radius: 100px;
   cursor: pointer;
@@ -21607,7 +21607,7 @@ span.ant-radio + * {
   box-shadow: none;
 }
 .ant-switch-checked {
-  background: #35977F;
+  background-color: #35977F;
 }
 .ant-switch-loading,
 .ant-switch-disabled {
@@ -23149,7 +23149,7 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
   margin: 0 0 0 32px;
 }
 .ant-tabs-content {
-  display: flex;
+  position: relative;
   width: 100%;
 }
 .ant-tabs-content-holder {
@@ -23157,13 +23157,33 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
   min-width: 0;
   min-height: 0;
 }
-.ant-tabs-content-animated {
-  transition: margin 0.3s;
+.ant-tabs-tabpane-hidden {
+  display: none;
 }
-.ant-tabs-tabpane {
-  flex: none;
-  width: 100%;
-  outline: none;
+.ant-tabs-switch-appear,
+.ant-tabs-switch-enter {
+  transition: none;
+}
+.ant-tabs-switch-appear-start,
+.ant-tabs-switch-enter-start {
+  opacity: 0;
+}
+.ant-tabs-switch-appear-active,
+.ant-tabs-switch-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.ant-tabs-switch-leave {
+  position: absolute;
+  transition: none;
+  inset: 0;
+}
+.ant-tabs-switch-leave-start {
+  opacity: 1;
+}
+.ant-tabs-switch-leave-active {
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .ant-tag {
   box-sizing: border-box;
