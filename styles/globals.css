@@ -8,6 +8,11 @@
     margin: 0;
 }
 
+@layer components{
+   .theme-config{
+    @apply bg-l100  duration-1000 transition ease-in-out
+   }
+}
 
 
 @tailwind components;

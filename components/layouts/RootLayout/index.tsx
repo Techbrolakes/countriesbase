@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
-import { Popconfirm, Typography } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
+import { Typography } from 'antd';
+import Button from '@/common/components/Button';
 interface IProps {
     children: React.ReactNode;
 }
@@ -19,32 +19,45 @@ const RootLayout = ({ children }: IProps) => {
         setMounted(true);
     }, []);
 
-    const darkTheme = () => {
-        setTheme('dark');
+    const TogglePage = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
     };
-    const whiteTheme = () => {
-        setTheme('white');
-    };
+
     if (!mounted) {
         return null;
     }
     return (
         <>
-            <section className="bg-l100 dark:bg-d100">
-                <Typography.Title>Countries Finder</Typography.Title>
-                <Typography.Paragraph className="!font-Secondary">By Lekan Dar</Typography.Paragraph>
-                <div className="min-h-screen">{children}</div>
-                <Popconfirm
-                    title="Set Color Mode"
-                    onConfirm={whiteTheme}
-                    onCancel={darkTheme}
-                    okText="Yes"
-                    cancelText="No"
-                >
-                    {visible ? <SettingOutlined spin style={{ fontSize: '32px', color: 'white' }} /> : null}
-                </Popconfirm>
-                <div>Created with ❤️ By Lekan Dar</div>
-            </section>
+            <main className="w-full">
+                <section className="theme-config dark:bg-d100 flex flex-col container">
+                    <div className="flex justify-between items-center py-4">
+                        <section className="!text-ld100 !dark:text-l100">
+                            <Typography.Title>Countries Finder</Typography.Title>
+                            <Typography.Paragraph className="!font-Secondary">By Lekan Dar</Typography.Paragraph>
+                        </section>
+                        <section>
+                            {theme === 'dark' ? (
+                                <Button
+                                    name="Dark Mode"
+                                    type="primary"
+                                    onClick={TogglePage}
+                                    className=" bg-blue-800 focus:bg-blue-700"
+                                />
+                            ) : (
+                                <Button
+                                    name="Light Mode"
+                                    type="primary"
+                                    onClick={TogglePage}
+                                    className=" bg-b100 focus:bg-b200"
+                                />
+                            )}
+                        </section>
+                    </div>
+                    <div className="min-h-screen">{children}</div>
+
+                    <div>Created with ❤️ By Lekan Dar</div>
+                </section>
+            </main>
         </>
     );
 };
