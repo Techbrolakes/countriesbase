@@ -28,7 +28,7 @@ const RootLayout = ({ children }: IProps) => {
     return (
         <>
             <main className="w-full">
-                <section className="theme-config dark:bg-d100 flex flex-col container">
+                <section className="theme-config dark:bg-d100 flex flex-col container space-y-12">
                     <div className="flex justify-between items-center p-4 shadow-md dark:bg-d200 ">
                         <section>
                             <Typography.Title className="text-black dark:text-white">
