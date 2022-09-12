@@ -1,19 +1,16 @@
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
-import { Typography } from 'antd';
+import { Dropdown, Menu, Typography } from 'antd';
+import { GlobalOutlined } from '@ant-design/icons';
 import Button from '@/common/components/Button';
+import constants from './constants';
 interface IProps {
     children: React.ReactNode;
 }
+const { REGIONS, SCREEN_TEXTS } = constants;
+
 const RootLayout = ({ children }: IProps) => {
     const [mounted, setMounted] = useState(false);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            window.pageYOffset > 100 ? setVisible(true) : setVisible(false);
-        });
-    }, []);
     const { theme, setTheme } = useTheme();
     useEffect(() => {
         setMounted(true);
@@ -26,36 +23,52 @@ const RootLayout = ({ children }: IProps) => {
     if (!mounted) {
         return null;
     }
+
+    const menu = <Menu items={REGIONS} />;
     return (
         <>
             <main className="w-full">
                 <section className="theme-config dark:bg-d100 flex flex-col container">
-                    <div className="flex justify-between items-center py-4">
-                        <section className="!text-ld100 !dark:text-l100">
-                            <Typography.Title>Countries Finder</Typography.Title>
-                            <Typography.Paragraph className="!font-Secondary">By Lekan Dar</Typography.Paragraph>
-                        </section>
+                    <div className="flex justify-between items-center p-4 shadow-md dark:bg-d200 ">
                         <section>
-                            {theme === 'dark' ? (
+                            <Typography.Title className="text-black dark:text-white">
+                                {SCREEN_TEXTS.title}
+                            </Typography.Title>
+                        </section>
+                        <section className="space-y-4">
+                            <div>
+                                {theme === 'dark' ? (
+                                    <Button
+                                        name="Light Mode"
+                                        type="primary"
+                                        onClick={TogglePage}
+                                        className=" bg-blue-800 focus:bg-blue-700"
+                                    />
+                                ) : (
+                                    <Button
+                                        name="Dark Mode"
+                                        type="primary"
+                                        onClick={TogglePage}
+                                        className=" bg-b100 focus:bg-b200"
+                                    />
+                                )}
+                            </div>
+                            <Dropdown overlay={menu}>
                                 <Button
-                                    name="Dark Mode"
+                                    name="Filter By Regions"
+                                    size="large"
                                     type="primary"
-                                    onClick={TogglePage}
-                                    className=" bg-blue-800 focus:bg-blue-700"
+                                    className=" bg-b100 focus:bg-b200 flex items-center"
+                                    icon={<GlobalOutlined spin />}
                                 />
-                            ) : (
-                                <Button
-                                    name="Light Mode"
-                                    type="primary"
-                                    onClick={TogglePage}
-                                    className=" bg-b100 focus:bg-b200"
-                                />
-                            )}
+                            </Dropdown>
                         </section>
                     </div>
                     <div className="min-h-screen">{children}</div>
 
-                    <div>Created with ❤️ By Lekan Dar</div>
+                    <div className="text-center">
+                        <Typography.Text className="text-black dark:text-white ">{SCREEN_TEXTS.footer}</Typography.Text>
+                    </div>
                 </section>
             </main>
         </>

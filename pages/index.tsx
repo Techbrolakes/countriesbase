@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <>
             <PageHead title="Home" />
             <RootLayout>
-                <Typography.Text>Home Page</Typography.Text>
+                <Typography.Text> Home Page</Typography.Text>
             </RootLayout>
         </>
     );
