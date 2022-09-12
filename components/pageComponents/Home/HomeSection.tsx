@@ -11,6 +11,7 @@ const HomeSection = () => {
         <>
             <Table
                 className="dark:bg-d100"
+                scroll={{ x: 'max-content' }}
                 dataSource={data?.data}
                 columns={[
                     {
