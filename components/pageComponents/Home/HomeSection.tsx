@@ -19,11 +19,14 @@ const HomeSection = () => {
                         title: 'S/N',
                     },
                     {
+                        dataIndex: 'name',
                         render: (_, record) => <Typography.Text>{record.name.common}</Typography.Text>,
                         title: 'Countries',
                     },
                     {
                         dataIndex: 'capital',
+                        defaultSortOrder: 'ascend',
+                        sorter: (a, b) => a.capital - b.capital,
                         title: 'Capital',
                     },
                     {
@@ -31,7 +34,7 @@ const HomeSection = () => {
                         title: 'Region',
                     },
                     {
-                        render: (_, record) => <Typography.Text>{record.population}</Typography.Text>,
+                        render: (_, record) => <Typography.Text>{record.population.toLocaleString()}</Typography.Text>,
                         title: 'Population',
                     },
                     {
