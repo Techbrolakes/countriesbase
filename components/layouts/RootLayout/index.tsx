@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Dropdown, Menu, Typography } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
 import Button from '@/common/components/Button';
+import Link from 'next/link';
 import constants from './constants';
 interface IProps {
     children: React.ReactNode;
@@ -24,7 +25,61 @@ const RootLayout = ({ children }: IProps) => {
         return null;
     }
 
-    const menu = <Menu items={REGIONS} />;
+    const menu = (
+        <Menu
+            items={[
+                {
+                    key: '1',
+                    label: (
+                        <Link href="/">
+                            <a>All Countries</a>
+                        </Link>
+                    ),
+                },
+                {
+                    key: '2',
+                    label: (
+                        <Link href="/region/africa">
+                            <a>Africa</a>
+                        </Link>
+                    ),
+                },
+                {
+                    key: '3',
+                    label: (
+                        <Link href="/region/america">
+                            <a>Americas</a>
+                        </Link>
+                    ),
+                },
+                {
+                    key: '4',
+                    label: (
+                        <Link href="/region/asia">
+                            <a>Asia</a>
+                        </Link>
+                    ),
+                },
+                {
+                    key: '5',
+                    label: (
+                        <Link href="/region/europe">
+                            <a>Europe</a>
+                        </Link>
+                    ),
+                },
+                {
+                    key: '5',
+                    label: (
+                        <Link href="/region/oceania">
+                            <a>Oceania</a>
+                        </Link>
+                    ),
+                },
+            ]}
+            selectable
+        />
+    );
     return (
         <>
             <main className="w-full">
@@ -64,7 +119,6 @@ const RootLayout = ({ children }: IProps) => {
                         </section>
                     </div>
                     <div className="min-h-screen">{children}</div>
-
                     <div className="text-center">
                         <Typography.Text className="text-black dark:text-white ">{SCREEN_TEXTS.footer}</Typography.Text>
                     </div>
