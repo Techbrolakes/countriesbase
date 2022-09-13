@@ -13,8 +13,12 @@ const getAllCountries = (): Promise<any> => {
     return request.get({ route: routes.getAllCountries });
 };
 
+const getRegions = (id: string): Promise<any> => {
+    return request.get({ route: routes.getRegion.replace('%region%', id) });
+};
 const countries = {
     getAllCountries,
+    getRegions,
 };
 
 export default countries;

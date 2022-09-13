@@ -7,6 +7,7 @@ const API = {
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     routes: {
         getAllCountries: '/all?fields=name,currencies,capital,region,area,population,continents,flags',
+        getRegion: '/region/%region%',
     },
     timeout: 6000,
 };

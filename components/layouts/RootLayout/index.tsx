@@ -69,7 +69,7 @@ const RootLayout = ({ children }: IProps) => {
                     ),
                 },
                 {
-                    key: '5',
+                    key: '6',
                     label: (
                         <Link href="/region/oceania">
                             <a>Oceania</a>
