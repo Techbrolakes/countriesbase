@@ -8,7 +8,7 @@ import constants from './constants';
 interface IProps {
     children: React.ReactNode;
 }
-const { REGIONS, SCREEN_TEXTS } = constants;
+const { SCREEN_TEXTS } = constants;
 
 const RootLayout = ({ children }: IProps) => {
     const [mounted, setMounted] = useState(false);
@@ -39,7 +39,7 @@ const RootLayout = ({ children }: IProps) => {
                 {
                     key: '2',
                     label: (
-                        <Link href="/region/africa">
+                        <Link href="/region/africa/africa">
                             <a>Africa</a>
                         </Link>
                     ),
@@ -47,7 +47,7 @@ const RootLayout = ({ children }: IProps) => {
                 {
                     key: '3',
                     label: (
-                        <Link href="/region/america">
+                        <Link href="/region/america/america">
                             <a>Americas</a>
                         </Link>
                     ),
@@ -55,7 +55,7 @@ const RootLayout = ({ children }: IProps) => {
                 {
                     key: '4',
                     label: (
-                        <Link href="/region/asia">
+                        <Link href="/region/asia/asia">
                             <a>Asia</a>
                         </Link>
                     ),
@@ -63,7 +63,7 @@ const RootLayout = ({ children }: IProps) => {
                 {
                     key: '5',
                     label: (
-                        <Link href="/region/europe">
+                        <Link href="/region/europe/europe">
                             <a>Europe</a>
                         </Link>
                     ),
@@ -71,7 +71,7 @@ const RootLayout = ({ children }: IProps) => {
                 {
                     key: '6',
                     label: (
-                        <Link href="/region/oceania">
+                        <Link href="/region/oceania/oceania">
                             <a>Oceania</a>
                         </Link>
                     ),
