@@ -1,23 +1,16 @@
 import { Avatar, Table, Typography } from 'antd';
 import React from 'react';
 import useGetCountries from 'hooks/useGetCountries';
-import logger from '@logger';
 
 const HomeSection = () => {
     const data = useGetCountries();
 
-    logger(data.data);
     return (
         <>
             <Table
-                className="dark:bg-d100"
                 scroll={{ x: 'max-content' }}
                 dataSource={data?.data}
                 columns={[
-                    {
-                        render: (text, record, index) => index + 1,
-                        title: 'S/N',
-                    },
                     {
                         dataIndex: 'name',
                         render: (_, record) => <Typography.Text>{record.name.common}</Typography.Text>,
@@ -25,8 +18,7 @@ const HomeSection = () => {
                     },
                     {
                         dataIndex: 'capital',
-                        defaultSortOrder: 'ascend',
-                        sorter: (a, b) => a.capital - b.capital,
+
                         title: 'Capital',
                     },
                     {
