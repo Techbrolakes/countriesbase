@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ThemeContext from '../context';
+import { BsMoonStarsFill, BsFillCloudSunFill } from 'react-icons/bs';
 
 interface IProps {
     children: React.ReactNode;
@@ -22,11 +23,19 @@ const MainLayout: React.FC<IProps> = ({ children }) => {
     return (
         <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
             <section className="">
-                <div className={darkMode ? 'bg-primary text-white p-6' : 'bg-slate-100 text-primary p-6'}>
+                <div className={darkMode ? 'bg-primary text-white p-6' : 'bg-[FAFAFA] text-primary p-6'}>
                     <section className="flex justify-between items-center">
-                        <h2>Where in the world?</h2>
-                        <button onClick={toggleDarkMode} className="bg-red-500 text-white p-2 rounded-md">
-                            {darkMode ? 'Light mode' : 'Dark mode'}
+                        <h2 className="font-medium text-xl">Where in the world?</h2>
+                        <button onClick={toggleDarkMode} className="text-white">
+                            {darkMode ? (
+                                <span className="flex items-center text-white font-medium gap-2">
+                                    <BsMoonStarsFill className="text-xl text-[#FEFCD7]" /> Dark mode
+                                </span>
+                            ) : (
+                                <span className="flex items-center text-primary font-medium gap-2">
+                                    <BsFillCloudSunFill className=" text-xl text-yellow-300" /> Light mode
+                                </span>
+                            )}
                         </button>
                     </section>
                 </div>
