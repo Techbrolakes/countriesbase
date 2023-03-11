@@ -23,7 +23,7 @@ const App: React.FC = () => {
     ];
     return (
         <MainLayout>
-            <main className="min-h-screen py-6">
+            <main className="py-6 space-y-12">
                 <section className="flex justify-between items-center">
                     <Input />
                     <div>
@@ -36,20 +36,16 @@ const App: React.FC = () => {
                     </div>
                 </section>
 
-                <Card />
-
-                <section className="space-y-3">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-6">
                     {data?.data.map(({ name, population, flags, region, capital }) => (
                         <div key={name.common}>
-                            <img src={flags.svg} alt="" className="w-1/6 h-full" />
-                            <h1>{name.common}</h1>
-                            <p>{population}</p>
-                            <p>{region}</p>
-                            <ul>
-                                {capital?.map((cap, index) => (
-                                    <li key={index}>{cap}</li>
-                                ))}
-                            </ul>
+                            <Card
+                                flag={flags.png}
+                                name={name.common}
+                                population={population}
+                                region={region}
+                                capital={capital?.map((cap) => cap)}
+                            />
                         </div>
                     ))}
                 </section>
