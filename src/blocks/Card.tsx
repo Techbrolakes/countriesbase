@@ -1,5 +1,6 @@
 import React from 'react';
 import { useThemeContext } from '../context';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
     flag: string;
@@ -10,8 +11,10 @@ interface IProps {
 }
 const Card: React.FC<IProps> = ({ flag, name, population, region, capital }) => {
     const { darkMode } = useThemeContext();
+    const navigate = useNavigate();
     return (
         <div
+            onClick={() => navigate(`/details/${name}`)}
             className={`${
                 darkMode ? 'bg-primary' : 'bg-white'
             } antialiased leading-relaxed tracking-wide shadow-lg rounded-md w-full h-[380px] space-y-4 cursor-pointer `}
