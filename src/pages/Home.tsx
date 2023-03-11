@@ -12,10 +12,11 @@ import Spinner from '../blocks/Spinner';
 
 const Home: React.FC = () => {
     const { darkMode } = useThemeContext();
+    console.log(darkMode);
     const [loading, setLoading] = React.useState(false);
     const [region, setRegion] = React.useState<'Americas' | 'Africa' | 'Asia' | 'Europe' | 'Oceania' | ''>();
     const [searchQuery, setSearchQuery] = useState('');
-    const { data, isLoading } = useGetCountries(region);
+    const { data } = useGetCountries(region);
     const countryPerRow = 12;
     const [next, setNext] = React.useState(countryPerRow);
 
@@ -73,14 +74,15 @@ const Home: React.FC = () => {
                 <section className="block space-y-4 lg:flex justify-between items-center">
                     <div
                         className={`flex gap-2 px-6 py-3 items-center ${
-                            darkMode ? 'bg-primary' : 'bg-white'
+                            darkMode ? 'bg-primary' : 'bg-primary'
                         } rounded-md shadow-sm`}
                     >
                         <span>
                             <FcSearch size={'20px'} />
                         </span>
                         <Input
-                            className={`${darkMode ? 'bg-primary' : 'bg-white'} outline-none  `}
+                            bordered={false}
+                            className={`${darkMode ? 'bg-primary' : 'bg-primary'} outline-none !placeholder-white  `}
                             placeholder="Search for a country..."
                             type="text"
                             value={searchQuery}
@@ -94,7 +96,8 @@ const Home: React.FC = () => {
                             className={`${darkMode ? 'bg-primary' : 'bg-primary'} shadow-sm rounded-md px-6 py-3`}
                         >
                             <h4 className="flex gap-2 items-center">
-                                <span> Filter By Regions</span> <BsArrowDownShort size={'22px'} />
+                                <span className="text-white"> Filter By Regions</span>{' '}
+                                <BsArrowDownShort size={'22px'} />
                             </h4>
                         </Dropdown>
                     </div>

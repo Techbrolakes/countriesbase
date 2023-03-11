@@ -17,7 +17,7 @@ const Details: React.FC = () => {
             ) : (
                 <div className="min-h-screen space-y-12">
                     <button
-                        className="shadow-2xl py-2 px-4 bg-primary rounded-md flex gap-2"
+                        className="shadow-2xl py-2 px-4 bg-primary rounded-md text-white flex gap-2"
                         onClick={() => navigate(-1)}
                     >
                         <AiOutlineArrowLeft size={'20px'} />
