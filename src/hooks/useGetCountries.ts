@@ -25,13 +25,21 @@ interface IGetCountriesDetails {
     };
 }
 
-const useGetCountries = () => {
+const useGetCountries = (region?: string) => {
     const fetcher = async () => {
         const country = await axios.get<IGetCountriesDetails[]>(`https://restcountries.com/v3.1/all`);
         return country;
     };
 
-    const { data, isLoading, error } = useSWR(['https://restcountries.com/v3.1/all'], fetcher);
+    const regionFetcher = async () => {
+        const regions = await axios.get<IGetCountriesDetails[]>(`https://restcountries.com/v3.1/region/${region}`);
+        return regions;
+    };
+
+    const { data, isLoading, error } = useSWR(
+        [region ? `https://restcountries.com/v3.1/region/${region}` : "'https://restcountries.com/v3.1/all'"],
+        region ? regionFetcher : fetcher,
+    );
 
     return {
         data,

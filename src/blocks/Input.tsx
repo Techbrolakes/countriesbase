@@ -3,8 +3,9 @@ import { useThemeContext } from '../context';
 
 interface IProps extends React.HTMLAttributes<HTMLInputElement> {
     value?: string;
+    name?: string;
 }
-const Input: React.FC<IProps> = ({ value }) => {
+const Input: React.FC<IProps> = ({ value, name }) => {
     const { darkMode } = useThemeContext();
     return (
         <div
@@ -18,6 +19,7 @@ const Input: React.FC<IProps> = ({ value }) => {
                 placeholder="Search for a country..."
                 type="text"
                 value={value}
+                name={name}
             />
         </div>
     );
