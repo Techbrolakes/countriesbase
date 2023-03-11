@@ -15,7 +15,7 @@ const Details: React.FC = () => {
             {isLoading ? (
                 <Spinner />
             ) : (
-                <div className="space-y-12">
+                <div className="min-h-screen space-y-12">
                     <button
                         className="shadow-2xl py-2 px-4 bg-primary rounded-md flex gap-2"
                         onClick={() => navigate(-1)}

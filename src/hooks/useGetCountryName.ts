@@ -16,25 +16,19 @@ export interface IGetCountriesDetails {
     region: string;
     subregion: string;
     languages: {
-        zho: 'Chinese';
+        data: string;
     };
     latlng: [35.0, 105.0];
     landlocked: false;
     borders: string[];
     area: number;
     population: number;
-    fifa: 'CHN';
     timezones: string[];
     continents: ['Asia'];
     flags: {
         png: string;
         svg: string;
         alt: string;
-    };
-
-    startOfWeek: 'monday';
-    capitalInfo: {
-        latlng: [39.92, 116.38];
     };
 }
 [];

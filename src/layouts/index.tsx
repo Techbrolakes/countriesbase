@@ -42,7 +42,11 @@ const MainLayout: React.FC<IProps> = ({ children }) => {
                         </button>
                     </section>
                 </div>
-                <main className={darkMode ? 'bg-secondary text-white p-6' : 'bg-slate-200 text-secondary p-6'}>
+                <main
+                    className={
+                        darkMode ? 'bg-secondary text-white p-2 lg:p-6' : 'bg-slate-200 text-secondary p-2 lg:p-6'
+                    }
+                >
                     {isLoading ? <Spinner /> : children}
                 </main>
             </section>
