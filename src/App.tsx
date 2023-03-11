@@ -5,10 +5,11 @@ import useGetCountries from './hooks/useGetCountries';
 import { Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
 import Input from './blocks/Input';
+import Card from './blocks/Card';
 
 const App: React.FC = () => {
     const { darkMode } = useThemeContext();
-    const { data } = useGetCountries('all');
+    const { data } = useGetCountries();
 
     const items: MenuProps['items'] = [
         {
@@ -35,11 +36,23 @@ const App: React.FC = () => {
                     </div>
                 </section>
 
-                {data?.data.map(({ status, name }: { status: string; name: { common: string } }) => (
-                    <div key={status}>
-                        <h1>{name.common}</h1>
-                    </div>
-                ))}
+                <Card />
+
+                <section className="space-y-3">
+                    {data?.data.map(({ name, population, flags, region, capital }) => (
+                        <div key={name.common}>
+                            <img src={flags.svg} alt="" className="w-1/6 h-full" />
+                            <h1>{name.common}</h1>
+                            <p>{population}</p>
+                            <p>{region}</p>
+                            <ul>
+                                {capital?.map((cap, index) => (
+                                    <li key={index}>{cap}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </section>
             </main>
         </MainLayout>
     );
