@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import ThemeContext from '../context';
 import { BsMoonStarsFill, BsFillCloudSunFill } from 'react-icons/bs';
+import Spinner from '../blocks/Spinner';
+import useGetCountries from '../hooks/useGetCountries';
 
 interface IProps {
     children: React.ReactNode;
@@ -8,6 +10,7 @@ interface IProps {
 
 const MainLayout: React.FC<IProps> = ({ children }) => {
     const [darkMode, setDarkMode] = React.useState(true);
+    const { isLoading } = useGetCountries();
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -40,7 +43,7 @@ const MainLayout: React.FC<IProps> = ({ children }) => {
                     </section>
                 </div>
                 <main className={darkMode ? 'bg-secondary text-white p-6' : 'bg-slate-200 text-secondary p-6'}>
-                    {children}
+                    {isLoading ? <Spinner /> : children}
                 </main>
             </section>
         </ThemeContext.Provider>

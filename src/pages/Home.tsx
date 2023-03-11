@@ -8,13 +8,14 @@ import Card from '../blocks/Card';
 import { ScaleLoader } from 'react-spinners';
 import { FcSearch } from 'react-icons/fc';
 import { BsArrowDownShort } from 'react-icons/bs';
+import Spinner from '../blocks/Spinner';
 
 const Home: React.FC = () => {
     const { darkMode } = useThemeContext();
     const [loading, setLoading] = React.useState(false);
     const [region, setRegion] = React.useState<'Americas' | 'Africa' | 'Asia' | 'Europe' | 'Oceania' | ''>();
     const [searchQuery, setSearchQuery] = useState('');
-    const { data } = useGetCountries(region);
+    const { data, isLoading } = useGetCountries(region);
     const countryPerRow = 12;
     const [next, setNext] = React.useState(countryPerRow);
 
